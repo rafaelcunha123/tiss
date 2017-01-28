@@ -1,0 +1,371 @@
+//teste para guiaSPSADT
+
+{
+	"cabecalho": {
+		"padrao": "3.03.01",
+		"identificacaoTransacao":{
+			"tipoTransacao": "ENVIO_LOTE_GUIAS",
+			"sequencialTransacao": "2312123121",
+			"dataRegistroTransacao": "2017-02-13",
+			"horaRegistroTransacao": "03:59:00"
+		},
+		"origem":{
+			"identificacaoPrestador":{
+				"CPF":"01039481124"
+			}
+		},
+		"destino":{
+			"registroANS":"999121"
+		},
+		"loginSenhaPrestador":{
+			"loginPrestador": "121dqwe",
+			"senhaPrestador": "234567urftghjk234567892dff3468"
+		}
+	},
+	"prestadorParaOperadora":{
+		"loteGuias":{
+			"numeroLote": "12341234",
+			"guiaTISS":{
+					"guiaSPSADT": {
+						"cabecalhoGuia":{
+							"registroANS": "123456",
+							"numeroGuiaPrestador": "123245564",
+							"guiaPrincipal": "46546545"
+						},
+						"dadosAutorizacao": {
+							"numeroGuiaOperadora": "1234",
+							"dataAutorizacao": "1988-05-02",
+							"senha": "123deoliveira4",
+							"dataValidadeSenha": "2035-08-08"
+						},
+						"dadosBeneficiario": {
+							"numeroCarteira": "2222222",
+							"atendimentoRN": "S",
+							"nomeBeneficiario": "Joca Pedro Augusto",
+							"numeroCNS": "666",
+							"identificadorBeneficiario": "124p"
+						},
+						"dadosSolicitante": {
+							"contratadoSolicitante":{
+								"cpfContratado": "43511806844",
+								"nomeContratado": "Pedrao"
+							},
+							"profissionalSolicitante":{
+								"nomeProfissional":"Rafael",
+								"conselhoProfissional": "01",
+								"numeroConselhoProfissional":"123456",
+								"UF": "11",
+								"CBOS": "201115"
+							}
+						},
+						"dadosSolicitacao":{
+							"dataSolicitacao": "1955-12-12",
+							"caraterAtendimento": "1",
+							"indicacaoClinica": "remedio"
+						},
+						"dadosAtendimento":{
+							"tipoAtendimento": "20",
+							"indicacaoAcidente": "9",
+							"tipoConsulta": "1",
+							"motivoEncerramento": "41"
+						},
+						"procedimentosExecutados":{
+              "procedimentoExecutado":{
+                "dataExecucao": "2016-01-01",
+                "horaInicial": "20:59:12",
+                "horaFinal": "21:00:13",
+                "procedimento":{
+                  "codigoTabela": "18",
+                  "codigoProcedimento": "1",
+                  "descricaoProcedimento": "sei la tio"
+                },
+                "unidadeMedida": "001",
+                "quantidadeExecutada": "2",
+                "viaAcesso": "1",
+                "tecnicaUtilizada": "2",
+                "valorUnitario": "100.00",
+                "valorTotal": "200.00",
+                "codigoDespesa": "5",
+                "fatorReducaoAcrescimo": "10.2"
+              }
+						},
+						"valorTotal":{
+							"valorProcedimentos": "1500.80",
+							"valorOPME": "600.00",
+							"valorTotalGeral": "2100.80"
+						}
+					}
+			}
+		}
+	}
+}
+
+//teste para guiaResumoInternacao
+
+{
+	"cabecalho": {
+		"padrao": "3.03.01",
+		"identificacaoTransacao":{
+			"tipoTransacao": "ENVIO_LOTE_GUIAS",
+			"sequencialTransacao": "2312123121",
+			"dataRegistroTransacao": "2017-02-13",
+			"horaRegistroTransacao": "03:59:00"
+		},
+		"origem":{
+			"identificacaoPrestador":{
+				"CPF":"01039481124"
+			}
+		},
+		"destino":{
+			"registroANS":"999121"
+		},
+		"loginSenhaPrestador":{
+			"loginPrestador": "121dqwe",
+			"senhaPrestador": "234567urftghjk234567892dff3468"
+		}
+	},
+	"prestadorParaOperadora":{
+		"loteGuias":{
+			"numeroLote": "12341234",
+			"guiaTISS":{
+				"guiaResumoInternacao":{
+					"cabecalhoGuia":{
+						"registroANS": "123456",
+						"numeroGuiaPrestador": "13215465456"
+					},
+					"numeroGuiaSolicitacaoInterna":"4654654564568",
+					"dadosAutorizacao": {
+						"numeroGuiaOperadora":"48456456456456",
+						"dataAutorizacao":"1996-05-03",
+						"senha": "123456",
+						"dataValidadeSenha": "2017-05-03"
+					},
+					"dadosBeneficiario":{
+						"numeroCarteira":"22222",
+						"atendimentoRN": "N",
+						"nomeBeneficiario":"Josuellington da Silva",
+						"numeroCNS": "123456789",
+						"identificadorBeneficiario": "1234"
+					},
+					"dadosExecutante": {
+						"contratadoExecutante":{
+							"cpfContratado":"43511806844",
+							"nomeContratado": "rafa"
+						},
+						"CNES": "123456"
+					},
+					"dadosInternacao":{
+						"caraterAtendimento": "1",
+						"tipoFaturamento":"4",
+						"dataInicioFaturamento": "2016-02-02",
+						"horaInicioFaturamento":"22:24:00",
+						"dataFinalFaturamento":"2017-02-01",
+						"horaFinalFaturamento":"22:45:00",
+						"tipoInternacao":"5",
+						"regimeInternacao":"2"
+					},
+					"dadosSaidaInternacao":{
+						"diagnostico": "opa",
+						"indicadorAcidente": "0",
+						"motivoEncerramento": "41"
+					},
+					"procedimentosExecutados":{
+						"procedimentoExecutado":{
+							"dataExecucao":"1996-12-12",
+							"horaInicial":"20:40:00",
+							"horaFinal":"21:40:00",
+							"procedimento":{
+								"codigoTabela": "90",
+								"codigoProcedimento": "123456",
+								"descricaoProcedimento": "tirou sangue"
+							},
+							"quantidadeExecutada":"12.90",
+							"viaAcesso": "1",
+							"tecnicaUtilizada": "2",
+							"reducaoAcrescimo": "3.2",
+							"valorUnitario":"1200.00",
+							"valorTotal": "12.00",
+							"identEquipe":{
+								"identificacaoEquipe":{
+									"grauPart":"13",
+									"codProfissional":{
+										"cpfContratado":"43511806844"
+									}
+								}
+							}
+						}
+					},
+					"valorTotal":{
+						"valorProcedimentos": "2100.80",
+						"valorOPME": "2100.00",
+						"valorTotalGeral":"4200.80"
+					}
+				}
+			}
+		}
+	}
+}
+
+//teste para guiaHonorarios
+
+{
+	"cabecalho": {
+		"padrao": "3.03.01",
+		"identificacaoTransacao":{
+			"tipoTransacao": "ENVIO_LOTE_GUIAS",
+			"sequencialTransacao": "2312123121",
+			"dataRegistroTransacao": "2017-02-13",
+			"horaRegistroTransacao": "03:59:00"
+		},
+		"origem":{
+			"identificacaoPrestador":{
+				"CPF":"01039481124"
+			}
+		},
+		"destino":{
+			"registroANS":"999121"
+		},
+		"loginSenhaPrestador":{
+			"loginPrestador": "121dqwe",
+			"senhaPrestador": "234567urftghjk234567892dff3468"
+		}
+	},
+	"prestadorParaOperadora":{
+		"loteGuias":{
+			"numeroLote": "12341234",
+			"guiaTISS":{
+				"guiaHonorarios":{
+					"cabecalhoGuia":{
+						"registroANS":"123456",
+						"numeroGuiaPrestador":"123456789123"
+					},
+					"guiaSolicInternacao":"12456798798",
+					"senha":"1234578",
+					"numeroGuiaOperadora":"1247847852",
+					"beneficiario":{
+						"numeroCarteira":"124578369",
+						"nomeBeneficiario": "Suellington da Fonseca",
+						"atendimentoRN": "S"
+					},
+					"localContratado":{
+						"codigoContratado":{
+							"cnpjLocalExecutante":"12345678910140"
+						},
+						"nomeContratado":"Joseca",
+						"cnes":"1234567"
+					},
+					"dadosContratadoExecutante":{
+						"codigonaOperadora":"13231321",
+						"nomeContratadoExecutante":"Pedrao",
+						"cnesContratadoExecutante":"1245789"
+					},
+					"dadosInternacao":{
+						"dataInicioFaturamento": "1988-01-01",
+						"dataFimFaturamento": "1989-01-01"
+					},
+					"procedimentosRealizados":{
+						"procedimentoRealizado":{
+							"dataExecucao": "2000-01-01",
+							"horaInicial": "20:00:00",
+							"horaFinal": "21:00:00",
+							"procedimento":{
+								"codigoTabela": "90",
+								"codigoProcedimento": "123456",
+								"descricaoProcedimento": "tirou sangue"
+							},
+							"quantidadeExecutada": "2",
+							"viaAcesso": "2",
+							"tecnicaUtilizada": "3",
+							"reducaoAcrescimo": "12.0",
+							"valorUnitario": "1200",
+							"valorTotal": "2400",
+							"profissionais":{
+								"grauParticipacao":"11",
+								"codProfissional":{
+									"cpfContratado":"43511806844"
+								},
+								"nomeProfissional":"Rafael B",
+								"conselhoProfissional":"02",
+								"numeroConselhoProfissional": "213213213",
+								"UF":"11",
+								"CBOS":"201115"
+							}
+						}
+					},
+					"observacao":"oi aconteceu uma fita lá",
+					"valorTotalHonorarios":"1200.00",
+					"dataEmissaoGuia": "2000-01-01"
+				}
+			}
+		}
+	}
+}
+
+//teste para guiaConsulta
+
+{
+	"cabecalho": {
+		"padrao": "3.03.01",
+		"identificacaoTransacao":{
+			"tipoTransacao": "ENVIO_LOTE_GUIAS",
+			"sequencialTransacao": "2312123121",
+			"dataRegistroTransacao": "2017-02-13",
+			"horaRegistroTransacao": "03:59:00"
+		},
+		"origem":{
+			"identificacaoPrestador":{
+				"CPF":"01039481124"
+			}
+		},
+		"destino":{
+			"registroANS":"999121"
+		},
+		"loginSenhaPrestador":{
+			"loginPrestador": "121dqwe",
+			"senhaPrestador": "234567urftghjk234567892dff3468"
+		}
+	},
+	"prestadorParaOperadora":{
+		"loteGuias":{
+			"numeroLote": "12341234",
+			"guiaTISS":{
+				"guiaConsulta":{
+					"cabecalhoConsulta":{
+						"registroANS":"123456",
+						"numeroGuiaPrestador":"123456789123"
+					},
+					"numeroGuiaOperadora":"1247847852",
+					"dadosBeneficiario":{
+						"numeroCarteira":"124578369",
+						"atendimentoRN": "S",
+						"nomeBeneficiario": "Suellington da Fonseca",
+						"numeroCNS": "12132132",
+						"identificadorBeneficiario": "asd1"
+					},
+					"contratadoExecutante":{
+						"cpfContratado": "43511806844",
+						"nomeContratado": "Rafa",
+						"CNES": "123456"
+					},
+					"profissionalExecutante":{
+						"nomeProfissional": "Joao",
+						"conselhoProfissional":"01",
+						"numeroConselhoProfissional":"04432132",
+						"UF":"11",
+						"CBOS":"201115"
+					},
+					"indicacaoAcidente":"0",
+					"dadosAtendimento":{
+						"dataAtendimento":"1980-01-01",
+						"tipoConsulta":"1",
+						"procedimento":{
+							"codigoTabela":"00",
+							"codigoProcedimento":"123456",
+							"valorProcedimento":"1900.00"
+						}
+					}
+				}
+			}
+		}
+	}
+}
