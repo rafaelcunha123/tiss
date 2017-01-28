@@ -7,7 +7,6 @@ exports.controller = function(req, res) {
 		url: req.url.slice(1, req.url.length)
 	}
 
-
 	validator.validateSchema(dataObject)
 		
 		.then(builder.buildXml)
