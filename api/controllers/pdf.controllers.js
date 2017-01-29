@@ -6,15 +6,10 @@ exports.controller = function(req, res) {
 	let dataObject = {
 		body: req.body,
 		url: 'weakloteguias',
-		formName: req.url.slice(1, req.url.length),
 	}
 
 
 	validator.validateSchema(dataObject)
-	/*.then(x=>{
-		console.log(JSON.stringify(x, null, 2))
-		return x
-	})*/
 		.then(builder.buildPdf)
 		.then((pdf) => {
 			const filePath = path.join(__dirname, '../builders/tissForms/savedPdfs/', pdf.uuid)
