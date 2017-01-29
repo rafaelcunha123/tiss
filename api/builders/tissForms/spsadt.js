@@ -1,6 +1,34 @@
 	const jsPdf = require('node-jspdf')
 	const _ = require('lodash')
+	const moment = require('moment')
 	const actions = require('../helpers/pdf.helper.js')
+
+
+
+	function createBlock(divisor, length) {
+		let block = ''
+		for (let i = 1; i <= length; i++) {
+			block = block + divisor
+
+		}
+		block = block + "|"
+		return block
+	}
+
+	function formatDate(dateString) {
+		const thisDate = moment(dateString, 'YYYY-MM-DD')
+		const day = ("0" + thisDate.date()).slice(-2)
+		const month = ("0" + (thisDate.month() + 1)).slice(-2)
+		const formatDate = day + '/' + month + '/' + thisDate.year()
+		return formatDate
+	}
+
+	function findDadosSolicitante(contratadoSolicitante) {
+		if (contratadoSolicitante.cpfContratado) return contratadoSolicitante.cpfContratado
+		if (contratadoSolicitante.cnpjContratado) return contratadoSolicitante.cnpjContratado
+		if (contratadoSolicitante.codigoPrestadorNaOperadora) return contratadoSolicitante.codigoPrestadorNaOperadora
+		return undefined
+	}
 
 
 
@@ -21,19 +49,9 @@
 			leftMargin: 3
 		}
 
-		function createBlock(divisor, length) {
-			let block = ''
-			for (let i = 1; i <= length; i++) {
-				block = block + divisor
-
-			}
-			block = block + "|"
-			return block
-		}
 
 
-
-	 return	actions.text(doc, {
+		return actions.text(doc, {
 				txtArray: ['GUIA  DE SERVICO PROFISSIONAL / SERVICO AUXILIAR DE', 'DIAGNOSTICO E TERAPIA - SP/SADT'],
 				align: 'center',
 				fontSize: 11,
@@ -72,7 +90,7 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: _.has(data, 'cabecalhoGuia.registroANS') ? data.cabecalhoGuia.registroANS :createBlock('|__', 6),
+						text: _.has(data, 'cabecalhoGuia.registroANS') ? data.cabecalhoGuia.registroANS : createBlock('|__', 6),
 						fontSize: settings.contentFontSize,
 						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.contentFont,
@@ -112,7 +130,7 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: _.has(data, 'dadosAutorizacao.dataAutorizacao') ? data.dadosAutorizacao.dataAutorizacao :settings.dateBlock,
+						text: _.has(data, 'dadosAutorizacao.dataAutorizacao') ? formatDate(data.dadosAutorizacao.dataAutorizacao) : settings.dateBlock,
 						fontSize: settings.contentFontSize,
 						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.contentFont,
@@ -132,7 +150,7 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: createBlock(settings.blockDivisor, 20),
+						text: _.has(data, 'dadosAutorizacao.senha') ? data.dadosAutorizacao.senha : createBlock(settings.blockDivisor, 20),
 						fontSize: settings.contentFontSize,
 						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.contentFont,
@@ -152,7 +170,7 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: settings.dateBlock,
+						text: _.has(data, 'dadosAutorizacao.dataValidadeSenha') ? formatDate(data.dadosAutorizacao.dataValidadeSenha) : settings.dateBlock,
 						fontSize: settings.contentFontSize,
 						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.contentFont,
@@ -166,13 +184,13 @@
 					h: 7.28,
 					w: 78,
 					header: {
-						text: '7 - Numero da Gua Atribuido pela Operadora',
+						text: '7 - Numero da Guia Atribuido pela Operadora',
 						fontSize: settings.headerFontSize,
 						fontStyle: settings.headerStyle,
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: createBlock(settings.blockDivisor, 20),
+						text: _.has(data, 'dadosAutorizacao.numeroGuiaOperadora') ? data.dadosAutorizacao.numeroGuiaOperadora : createBlock(settings.blockDivisor, 20),
 						fontSize: settings.contentFontSize,
 						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.contentFont,
@@ -219,7 +237,7 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: createBlock(settings.blockDivisor, 20),
+						text: _.has(data, 'dadosBeneficiario.numeroCarteira') ? data.dadosBeneficiario.numeroCarteira : createBlock(settings.blockDivisor, 20),
 						fontSize: settings.contentFontSize,
 						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.contentFont,
@@ -239,7 +257,7 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: settings.dateBlock,
+						text: _.has(data, 'dadosBeneficiario.validadeCarteira') ? data.dadosBeneficiario.validadeCarteira : settings.dateBlock, //VALIDAR COMO INCLUIR ESSE ELEMENTO, JÁ QUE O SHCEMA ANS NÃO PERMITE PASSAR ESSE DADO
 						fontSize: settings.contentFontSize,
 						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.contentFont,
@@ -259,7 +277,10 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: "",
+						text: _.has(data, 'dadosBeneficiario.nomeBeneficiario') ? data.dadosBeneficiario.nomeBeneficiario : "",
+						fontSize: settings.contentFontSize,
+						fontStyle: settings.contentFontStyle,
+						fontFamily: settings.contentFont,
 					}
 				})
 			})
@@ -276,7 +297,7 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: createBlock(settings.blockDivisor, 15),
+						text: _.has(data, 'dadosBeneficiario.numeroCNS') ? data.dadosBeneficiario.numeroCNS : createBlock(settings.blockDivisor, 15),
 						fontSize: settings.contentFontSize,
 						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.contentFont,
@@ -296,7 +317,7 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: "  	" + createBlock(settings.blockDivisor, 1),
+						text: _.has(data, 'dadosBeneficiario.atendimentoRN') ? "  	" + data.dadosBeneficiario.atendimentoRN : "  	" + createBlock(settings.blockDivisor, 1),
 						fontSize: settings.contentFontSize,
 						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.contentFont,
@@ -343,7 +364,7 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: createBlock(settings.blockDivisor, 14),
+						text: _.has(data, 'dadosSolicitante.contratadoSolicitante') ? (findDadosSolicitante(data.dadosSolicitante.contratadoSolicitante) ? findDadosSolicitante(data.dadosSolicitante.contratadoSolicitante) : createBlock(settings.blockDivisor, 14)) : createBlock(settings.blockDivisor, 14),
 						fontSize: settings.contentFontSize,
 						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.contentFont,
@@ -363,7 +384,10 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: "",
+						text: _.has(data, 'dadosSolicitante.contratadoSolicitante.nomeContratado') ? data.dadosSolicitante.contratadoSolicitante.nomeContratado : "",
+						fontSize: settings.contentFontSize,
+						fontStyle: settings.contentFontStyle,
+						fontFamily: settings.contentFont,
 					}
 				})
 			})
@@ -380,7 +404,10 @@
 						fontFamily: settings.headerFont,
 					},
 					content: {
-						text: '',
+						text: _.has(data, 'dadosSolicitante.profissionalSolicitante.nomeProfissional') ? data.dadosSolicitante.profissionalSolicitante.nomeProfissional : "",
+						fontSize: settings.contentFontSize,
+						fontStyle: settings.contentFontStyle,
+						fontFamily: settings.contentFont,
 					}
 				})
 			})
@@ -391,9 +418,9 @@
 					h: 7.28,
 					w: 14,
 					content: {
-						text: '    ' + createBlock('|___', 2),
+						text: _.has(data, 'dadosSolicitante.profissionalSolicitante.conselhoProfissional') ? '       ' +data.dadosSolicitante.profissionalSolicitante.conselhoProfissional : '    ' + createBlock('|___', 2),
 						fontSize: settings.headerFontSize,
-						fontStyle: settings.headerStyle,
+						fontStyle: settings.contentFontStyle,
 						fontFamily: settings.headerFont,
 					}
 				})
