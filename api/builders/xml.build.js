@@ -1,5 +1,5 @@
 const schemas = require('../schemas')
-const xmlFactory = require('./xmlFactory.js')
+const xmlFactory = require('./helpers/xml.helper.js')
 
 const isFunction = val => (typeof val === 'function')
 

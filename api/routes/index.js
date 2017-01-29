@@ -17,7 +17,7 @@ router
 	.post(ctrXml.controller)
 
 router
-	.route('/printspsadt')
+	.route('/spsadt')
 	.post(ctrlPdf.controller)
 
 module.exports = router

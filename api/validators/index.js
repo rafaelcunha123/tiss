@@ -3,10 +3,9 @@ const Promise = require('bluebird')
 const validate = Promise.promisify(joi.validate)
 const schemas = require('../schemas')
 
+
 exports.validateSchema = function(dataObject) {
-	console.log('schema', schemas[dataObject.body.cabecalho.padrao]['edocSchema'])
-	console.log('url',dataObject.url)
-	console.log(schemas[dataObject.body.cabecalho.padrao]['edocSchema'][dataObject.url])
+	
 	if (!dataObject.body.cabecalho) {
 		return Promise.reject({
 			message: "Missing 'cabecalho' key in body"

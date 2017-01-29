@@ -4,7 +4,7 @@ const builder = require('../builders')
 exports.controller = function(req, res) {
 	let dataObject = {
 		body: req.body,
-		url: req.url.slice(1, req.url.length)
+		url: req.url.slice(1, req.url.length).toLowerCase()
 	}
 
 	validator.validateSchema(dataObject)

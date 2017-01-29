@@ -1,7 +1,7 @@
 const builder = require('xmlbuilder');
 const md5 = require('js-md5')
 const fs = require('fs')
-const schemas = require('../schemas')
+const schemas = require('../../schemas')
 
 function sortByOrder(obj1, obj2) {
   if (obj1.order < obj2.order) return -1
