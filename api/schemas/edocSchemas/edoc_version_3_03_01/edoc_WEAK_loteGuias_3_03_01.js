@@ -308,7 +308,7 @@ const loteGuiasSchema = joi.object().keys({
 		guiaResumoInternacao: guiaResumoInternacaoSchema,
 		guiaHonorarios: guiaHonorariosSchema,
 		guiaConsulta: guiaConsultaSchema,
-	}).xor('guiaSPSADT', 'guiaResumoInternacao', 'guiaHonorarios', 'guiaConsulta', 'guiaOdonto')
+	}).xor('guiaSPSADT', 'guiaResumoInternacao', 'guiaHonorarios', 'guiaConsulta', 'guiaOdonto').required()
 })
 
 
@@ -327,8 +327,8 @@ const loteGuiasFullSchema = joi.object().keys({
 		loginSenhaPrestador: loginSenhaPrestadorSchema
 	}),
 	prestadorParaOperadora: joi.object().keys({
-		loteGuias: loteGuiasSchema
-	})
+		loteGuias: loteGuiasSchema.required()
+	}).required()
 })
 
 

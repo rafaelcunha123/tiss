@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const schemas = require('../schemas')
 const xmlBuild = require('./xml.build.js')
 const pdfBuild = require('./pdf.build.js')
@@ -22,8 +23,6 @@ exports.buildXml = function(validData) {
 
 exports.buildPdf = function(validData) {
 	const padrao = validData.cabecalho.padrao
-	//console.log(JSON.stringify (validData.prestadorParaOperadora.loteGuias.guiaTISS, null, 2))
-	//console.log('now', Object.keys(validData.prestadorParaOperadora.loteGuias))
 	const form = Object.keys(validData.prestadorParaOperadora.loteGuias.guiaTISS).filter(data =>{
 		return data.slice(0,4) === 'guia'
 	})[0]
