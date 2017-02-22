@@ -11,5 +11,8 @@ router
 	.route('/solicitacaoProcedimento')
 	.post(ctrXml.controller)
 
+router
+	.route('/loteGuias')
+	.post(ctrXml.loteGuiasController)
 
 module.exports = router

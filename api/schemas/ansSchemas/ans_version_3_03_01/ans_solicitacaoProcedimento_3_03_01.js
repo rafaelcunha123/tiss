@@ -411,5 +411,4 @@ exports.solicitacaoProcedimento = [{
 			}]
 		}]
 	}
-	//INSERT SCHEMA
 ]

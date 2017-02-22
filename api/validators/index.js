@@ -5,7 +5,7 @@ const schemas = require('../schemas')
 
 
 exports.validateSchema = function(dataObject) {
-	
+
 	if (!dataObject.body.cabecalho) {
 		return Promise.reject({
 			message: "Missing 'cabecalho' key in body"
@@ -19,8 +19,7 @@ exports.validateSchema = function(dataObject) {
 			message: "Unhandled 'padrao'. API accepts only [" + Object.keys(schemas) + "]"
 		})
 	}
-	
-	
+
 	return validate(dataObject.body, schemas[dataObject.body.cabecalho.padrao]['edocSchema'][dataObject.url], {
 		//allowUnknown: true
 	})
