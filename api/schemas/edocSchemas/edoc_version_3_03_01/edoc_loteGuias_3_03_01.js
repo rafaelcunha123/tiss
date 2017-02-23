@@ -37,7 +37,8 @@ const contratadoExecutanteSchema = joi.object().keys({
 const procedimentoSchema = joi.object().keys({
 	codigoTabela: joi.string().valid(lists.dm_tabela),
 	codigoProcedimento: joi.string().min(1).max(10).required(),
-	valorProcedimento: joi.number().precision(2)
+	valorProcedimento: joi.number().precision(2),
+	descricaoProcedimento: joi.string(),
 })
 
 const dadosAtendimentoSchema = joi.object().keys({
